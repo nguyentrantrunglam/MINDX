@@ -22,16 +22,21 @@ console.log(apples) //[ 'air', { model: 'm1' }, 'macbook2017' ]
 ```
 #### Giải thích
 
-Biến apples sử dụng Spread Operator để clone biến macbooks. Array của biến macbook có type lần lượt là [value, reference, value] => Array của apples cũng tương tự. Sau khi clone thì tại apples[1] giá trị ở đó là tham chiếu địa chỉ ô nhớ của Object trong biến macbooks. Nên khi modify giá trị của Object trong apples là ta đang modify của cả giá trị của Object trong biến apples. Còn apples[0] là ta modify tham trị nên ko ảnh hưởng đến mảng cũ.
+Biến apples được clone từ macbook nên có cùng cấu trúc => macbooks[1] và apples[1] có cùng kiểu giá trị tham chiếu nên khi thay đổi apples[1] thì macbooks[1] cũng thay đổi theo
+còn macbooks[0] và apples[0] , macbooks[2] và apples[2] là giá trị nguyên thủy nên vẫn được giữ nguyên
 
 ## EX3
+#### Đoạn code được hiểu
 ```
 var text = 'outside';
 function show() {
-  console.log(text) //undefined
+  var text = undefined;
+  console.log(text); //undefined
   var text = 'inside';
 }
 ```
+#### Giải thích
+Đây chính là hoisting trong javascript, điều đó co nghĩa là text không được đẩy lên cho nên text = undefined
 
 ## EX4
 ```
