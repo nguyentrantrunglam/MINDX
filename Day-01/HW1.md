@@ -7,8 +7,8 @@ function cloneDeep(obj) {
 }
 const obj2 = cloneDeep(obj1)
 obj2.x = 10;
-console.log(obj1);
-console.log(obj2);
+console.log(obj1); //{ x: 20, y: 30 }
+console.log(obj2); //{ x: 10, y: 30 }
 ```
 ## EX2
 ```
