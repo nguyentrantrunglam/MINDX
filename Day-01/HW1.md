@@ -32,7 +32,7 @@ var text = 'outside';
 function show() {
   var text = undefined;
   console.log(text); //undefined
-  var text = 'inside';
+  text = 'inside';
 }
 ```
 #### Giải thích
