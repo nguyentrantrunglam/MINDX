@@ -10,7 +10,6 @@
 //     }
 // })
 
-const { error } = require('console');
 const fs = require('fs');
 
 fs.readFile('numbers.txt', {encoding: "utf8"}, (error,data)=>{

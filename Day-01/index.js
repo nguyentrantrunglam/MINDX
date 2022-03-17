@@ -1,7 +1,8 @@
 const obj1 = { x: 20, y: 30 };
 
 function cloneDeep(obj) {
-    return obj3 = { ...obj }
+    // return obj3 = { ...obj }             // Cách 1
+    return JSON.parse(JSON.stringify(obj)); // Cách 2
 }
 const obj2 = cloneDeep(obj1)
 obj2.x = 10;
@@ -54,9 +55,9 @@ console.log(obj2);
 
 // console.log("hi");
 
-// var text = 'outside';
+var text = 'outside'; //outer scope
 function show() {
   console.log(text) //undefined
-  var text = 'inside';
+  var text = 'inside'; // inner scope
 }
 show();
