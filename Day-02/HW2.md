@@ -13,7 +13,7 @@ fs.writeFile("numbers.txt",data ,(error)=>{
 })
 ```
 
-## Bài 2:
+## Bài 3:
 ```
 fs.readFile('numbers.txt', {encoding: "utf8"}, (error,data)=>{
     if (error) {
