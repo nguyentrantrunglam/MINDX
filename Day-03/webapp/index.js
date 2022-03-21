@@ -15,6 +15,8 @@ app.get('/course', (req, res) => {
 app.get('/course/random', (req, res) => {
     const course = [{ "course": "c4e" }, { "course": "ci" },{ "course": "web57" }];
     const random = Math.floor(Math.random()*course.length)
+    // console.log(course.length);
+    // console.log(random);
     res.send(course[random]);
 });
 
@@ -44,9 +46,9 @@ app.get('/login', (req, res) => {
 // POST
 app.post("/auth/login", (req, res) => {
     // console.log(req.body);
-    // console.log(req.body.username)
-    // console.log(req.body.password)
-    if (req.body.username === 'admin' && req.body.password === '123456') {
+    const username = req.body.username;
+    const password = req.body.password;
+    if (username === 'admin' && password === '123456') {
         res.send({ "success": true })
     } else {
         res.send({ "success": false })
