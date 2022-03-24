@@ -1,0 +1,9 @@
+.input{
+    height: 15px;
+    background-color: beige;
+}
+.login{
+    display: flex;
+    justify-content:flex-end;
+    flex-direction: column;
+}
