@@ -1,6 +1,7 @@
 const express = require("express");
 const postModel = require('./post')
 const commentModel = require('./comment')
+const postCommentModel = require("./postcomments")
 const app = express();
 
 app.use(express.static('public'));
@@ -60,7 +61,7 @@ app.delete("/api/posts/:postId", async (req, res) => {
     }
 })
 
-// COMMENT
+// Bài 2 : Comment
 //API create
 app.post('/api/comments', async (req, res) => {
     const { content, createdBy, postId } = req.body;
@@ -99,13 +100,30 @@ app.put('/api/comments/:commentId', async (req, res) => {
 //API delete
 app.delete('/api/comments/:commentId', async (req, res) => {
     try {
-        const {commentId} = req.params;
+        const { commentId } = req.params;
         const deleteComment = await commentModel.deleteComment(commentId);
         res.send({ success: 1, data: deleteComment });
     } catch (error) {
         res.send({ success: 0, data: null, message: error.message });
-        
+
     }
+})
+
+// POST's Comment
+
+//API read
+
+app.get("/api/posts/:postId/comments", async (req,res)=>{
+try {
+    const {postId} = req.params;
+    console.log({postId});
+    const readComments = await postCommentModel.readComments(postId);
+    res.send({ success: 1, data: readComments })
+} catch (error) {
+    res.send({ success: 0, data: null, message:error.message});
+}
+    
+    
 })
 
 //HomeWork
@@ -158,6 +176,27 @@ app.post("/auth/login", (req, res) => {
         res.send({ "success": false })
     }
 })
+
+// //MongoDB
+// //lets require/import the mongodb native drivers.
+// var mongodb = require('mongodb');
+// //We need to work with "MongoClient" interface in order to connect to a mongodb server.
+// var MongoClient = mongodb.MongoClient;
+// // Connection URL. This is where your mongodb server is running.
+// var url = 'mongodb://localhost:9000/my_database_name';
+// // Use connect method to connect to the Server
+// MongoClient.connect(url, function (err, db) {
+//     if (err) {
+//         console.log('Unable to connect to the mongoDB server. Error:', err);
+//     } else {
+//         //HURRAY!! We are connected. :)
+//         console.log('Connection established to', url);
+//         // do some work here with the database.
+//         //Close connection
+//         db.close();
+//     }
+// });
+
 
 app.listen(9000, err => {
     if (err) {

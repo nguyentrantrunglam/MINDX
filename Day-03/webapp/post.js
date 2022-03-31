@@ -25,7 +25,7 @@ const getPosts = async () => {
 }
 
 //Read 1
-const getPost = async (postId) => {
+const getPost = async ({postId}) => {
     const oldPosts = JSON.parse(await fs.promises.readFile('./posts.json', { encoding: 'utf-8' }));
     const foundPost = oldPosts.find(post => String(post.id) === postId);
 
