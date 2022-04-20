@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost:27017/test', err => {
     }
     console.log("Connected successfully to database");
 });
-
+///Schema
 //Posts
 const PostSchema = new mongoose.Schema({
     content: String,
